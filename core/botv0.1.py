@@ -23,11 +23,6 @@ def get_data(articles, page):
         date = info[-1]
         objDate = datetime.datetime.strptime( (date + " " + hour), '%d/%m/%Y %H:%M' )        
 
-        # # METADATA
-        # name1 = articles[j].find_all('h2', {'class':'entry-title'})[0].text.split()[3]       
-        # date = articles[j].find_all('h2', {'class':'entry-title'})[0].text.split()[-1]
-        # hour = articles[j].find_all('h2', {'class':'entry-title'})[0].text.split()[-3]
-        
         # DATA
         tds = articles[j].find_all('td')
         keys = ['1°','2°','3°','4°','5°','6°','7°']
@@ -50,6 +45,7 @@ def get_data(articles, page):
                         m += 3
                     break
             n+=3
+        # CREATE DATAFRAME
         df = pd.DataFrame({
             "DATA": objDate,
             "NOME": name,
